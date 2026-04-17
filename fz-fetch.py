@@ -8,6 +8,7 @@ import re
 from pathlib import Path
 from datetime import datetime, timedelta
 
+__doc__ = "Highly inspired by fastfetch and neofetch"
 
 class SystemInfo:
     def __init__(self):

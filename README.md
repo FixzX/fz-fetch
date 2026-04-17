@@ -1,5 +1,7 @@
 # Fz-Fetch - System Information Tool
 
+> Highly inspired by **fastfetch** and **neofetch**
+
 A lightweight Python script that displays system information in a neofetch-style format. Works on **Linux** (Mint, Ubuntu, Fedora, Debian, etc.) and **Windows**.
 
 ## Features
@@ -158,6 +160,14 @@ You can modify the script to add more information or customize colors:
 **GitHub:** https://github.com/FixzX/fz-fetch
 
 Feel free to fork, star, and contribute!
+
+## Credits & Inspiration
+
+This project is highly inspired by:
+- **[neofetch](https://github.com/dylanaraps/neofetch)** - Original system info display tool
+- **[fastfetch](https://github.com/LinusDierckxsens/fastfetch)** - Fast and minimal neofetch alternative
+
+Both excellent tools that inspired the design and functionality of Fz-Fetch!
 
 ## License
 
