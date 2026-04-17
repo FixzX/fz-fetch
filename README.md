@@ -22,33 +22,31 @@ A lightweight Python script that displays system information in a neofetch-style
 
 1. **Clone or download** the script:
    ```bash
-   git clone <repository-url>
-   cd fahh
+   git clone https://github.com/FixzX/fz-fetch.git
+   cd fz-fetch
    ```
-
-   Or if you already have the file, navigate to its directory.
 
 2. **Make it executable**:
    ```bash
-   chmod +x neofetch.py
+   chmod +x fz-fetch.py
    ```
 
 ## Usage
 
 ### Run directly:
 ```bash
-python3 neofetch.py
+python3 fz-fetch.py
 ```
 
 ### Or as a command:
 ```bash
-./neofetch.py
+./fz-fetch.py
 ```
 
 ### Create an alias (optional):
 Add this to your `~/.bashrc` or `~/.bash_aliases`:
 ```bash
-alias nf='python3 /path/to/neofetch.py'
+alias fz='python3 /path/to/fz-fetch.py'
 ```
 
 Then reload:
@@ -113,6 +111,12 @@ You can modify the script to add more information or customize colors:
 - **Wrong Desktop Environment**: Set the `DESKTOP_SESSION` environment variable if it's not detected correctly
 - **Package count wrong**: Different package managers count packages differently
 
+## Repository
+
+**GitHub:** https://github.com/FixzX/fz-fetch
+
+Feel free to fork, star, and contribute!
+
 ## License
 
-Free to use and modify for personal or commercial projects.
+MIT License - Feel free to use and modify for personal or commercial projects.
