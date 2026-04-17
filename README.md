@@ -1,13 +1,14 @@
 # Fz-Fetch - System Information Tool
 
-A lightweight Python script that displays system information in a neofetch-style format. Works on Linux Mint, Ubuntu, Fedora, Debian, and other Linux distributions.
+A lightweight Python script that displays system information in a neofetch-style format. Works on **Linux** (Mint, Ubuntu, Fedora, Debian, etc.) and **Windows**.
 
 ## Features
 
 - **Beautiful ASCII Art**: Large, detailed neofetch-style logos for each Linux distribution
+- **Windows Support**: Works on Windows 10/11 with Windows logo display
 - **1:1 Layout**: Logo on the left, system info on the right (just like neofetch)
 - **Color Bar**: Shows terminal color capabilities at the bottom
-- **OS Detection**: Automatically detects your Linux distribution
+- **OS Detection**: Automatically detects your operating system and distribution
 - **System Information**:
   - Operating System name and version
   - Kernel version
@@ -25,6 +26,7 @@ A lightweight Python script that displays system information in a neofetch-style
   - Fedora
   - Debian
   - Arch Linux
+  - Windows 10/11
   - Generic Linux fallback
 
 ## Installation
@@ -70,6 +72,7 @@ fz
 
 ## Supported Distributions
 
+**Linux:**
 - **Linux Mint** 🍃 (with custom logo)
 - **Ubuntu** ◯
 - **Fedora**
@@ -77,15 +80,19 @@ fz
 - **Arch Linux** and derivatives
 - **And all other Linux distributions!**
 
+**Windows:**
+- **Windows 10** and **Windows 11** ⊞
+
 ## Requirements
 
 - Python 3.6+
-- Linux operating system
-- Standard Linux tools (should be pre-installed):
+- **Linux** or **Windows 10/11** operating system
+- For **Linux**: Standard utilities (pre-installed):
   - `/proc/uptime`
   - `/proc/cpuinfo`
   - `/proc/meminfo`
   - `/proc/os-release`
+- For **Windows**: WMI (built-in)
 
 ## Example Output
 
