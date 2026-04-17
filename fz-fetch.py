@@ -208,64 +208,77 @@ class SystemInfo:
         return self.info
 
     def get_ascii_logo(self, os_name):
-        """Return ASCII art logo for the OS"""
+        """Return ASCII art logo for the OS - Neofetch style"""
         logos = {
             'Linux Mint': [
                 "       .;;,.       ",
                 "     .;;`,..;;.    ",
                 "    .;;`'  `;;.    ",
-                "    .;;. ,::, .;;. ",
-                "    .;;.`::::'.;;. ",
-                "     `;;.    .;;'  ",
-                "       `;;.;;;'    ",
-                "           .      ",
-                "       LINUX MINT  ",
+                "   .;;. ,::, .;;.  ",
+                "   .;;.`::::'.;;.  ",
+                "   .;;. ':::' .;;. ",
+                "   .;;. .:::.;;.   ",
+                "    `;;. ';;';;'   ",
+                "      `;;.;;;'     ",
+                "          .        ",
+                "      LINUX MINT   ",
             ],
             'Ubuntu': [
-                "          .....   ",
-                "        .MMMMM.   ",
-                "       MMMMMMMM   ",
-                "      MMMMMMMMM   ",
-                "     MMMM    MMM   ",
-                "    MMMM  MM  MMM  ",
-                "    MMM   MM   MMM ",
-                "    MMM          M ",
+                "          .----. ",
+                "        / Ubuntu \\ ",
+                "       |  o    o | ",
+                "       |    <>    | ",
+                "       |  \\____/ | ",
+                "        \\        / ",
+                "         '------' ",
+                "                  ",
+                "                  ",
                 "       UBUNTU     ",
             ],
             'Fedora': [
-                "        ,'''',.   ",
-                "       /  o o  \\  ",
-                "      {    >    } ",
-                "       \\  - -  /  ",
-                "        `.___.´   ",
-                "                  ",
-                "        FEDORA    ",
+                "         ,-. ",
+                "        /   \\ ",
+                "       | o o | ",
+                "       |  >  | ",
+                "       | --- | ",
+                "        \\___/ ",
+                "         | | ",
+                "        /   \\ ",
+                "       /     \\ ",
+                "        FEDORA ",
             ],
             'Debian': [
-                "   _____          ",
-                "  /  o o \\        ",
-                " {    >   }       ",
-                "  \\  - - /        ",
-                "   '-----'        ",
-                "  DEBIAN GNU      ",
+                "    ___           ",
+                "   /   \\__        ",
+                "  |  o  o  \\      ",
+                "  |    >    |     ",
+                "  |  \\___/  |     ",
+                "   \\      _/      ",
+                "    '----'        ",
+                "                  ",
+                "                  ",
+                "     DEBIAN       ",
             ],
             'Arch Linux': [
-                "     /\\          ",
-                "    /  \\         ",
-                "   /    \\        ",
-                "  /      \\       ",
-                " /        \\      ",
-                "/          \\     ",
-                "            \\    ",
-                "   ARCH LINUX    ",
+                "       /\\         ",
+                "      /  \\        ",
+                "     /    \\       ",
+                "    /      \\      ",
+                "   /   /\\   \\     ",
+                "  /   /  \\   \\    ",
+                " /   /____\\   \\   ",
+                "/   /      \\   \\  ",
+                "    ARCH LINUX    ",
             ],
             'default': [
-                "   ___           ",
-                "  (o o)          ",
-                " ( =^= )         ",
-                "  (   )          ",
-                "   | |           ",
-                "   LINUX         ",
+                "      .-----.     ",
+                "     /  o o  \\    ",
+                "    |    >    |   ",
+                "    |  \\___/  |   ",
+                "     \\       /    ",
+                "      '-._.-'     ",
+                "                  ",
+                "       LINUX      ",
             ]
         }
         
@@ -276,21 +289,21 @@ class SystemInfo:
         return logos['default']
 
     def display(self):
-        """Display system information"""
+        """Display system information in neofetch style"""
         self.collect_info()
         
         os_name = self.info['OS']
         logo_lines = self.get_ascii_logo(os_name)
         
-        # Build info lines
+        # Build info lines with better formatting
         info_lines = []
         max_label_len = max(len(label) for label in self.info.keys())
         
         for label, value in self.info.items():
             label_str = f"{label}:".ljust(max_label_len + 1)
-            info_lines.append(f"{self.colors['green']}{label_str}{self.colors['reset']}{self.colors['cyan']}{value}{self.colors['reset']}")
+            info_lines.append(f"{self.colors['magenta']}{label_str}{self.colors['cyan']}{value}{self.colors['reset']}")
         
-        # Print logo and info side by side
+        # Print logo and info side by side like neofetch
         print()
         max_lines = max(len(logo_lines), len(info_lines))
         
