@@ -56,7 +56,7 @@ source ~/.bashrc
 
 And use it anywhere:
 ```bash
-nf
+fz
 ```
 
 ## Supported Distributions
@@ -81,20 +81,17 @@ nf
 ## Example Output
 
 ```
-    ╔═════════════════╗
-    ║   🍃 LINUX     ║
-    ║    MINT        ║
-    ╚═════════════════╝
-
-  OS:       Linux Mint 22.3
-  Kernel:   6.14.0-37-generic
-  Uptime:   1h 10m
-  CPU:      Intel(R) Celeron(R) CPU B820 @ 1.70GHz (2)
-  Memory:   1858MB / 3817MB
-  DE:       Xfce
-  Shell:    bash
-  Packages: 1865 (dpkg)
-  Hostname: fixz
+     .;;,.         OS:      Linux Mint 22.3
+   .;;`,..;;.      Kernel:  6.14.0-37-generic
+  .;;`'  `;;.      Uptime:  1h 35m
+ .;;. ,::, .;;.    CPU:     Intel(R) Celeron(R) CPU B820 @ 1.70GHz (2)
+ .;;.`::::'.;;.    Memory:  2852MB / 3817MB
+ .;;. ':::' .;;.   DE:      Xfce
+ .;;. .:::.;;.     Shell:   bash
+  `;;. ';;';;'     Packages:1869 (dpkg)
+    `;;.;;;'       Hostname:fixz
+        .          
+    LINUX MINT     
 ```
 
 ## Customization
