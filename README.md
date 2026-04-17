@@ -26,6 +26,8 @@ A lightweight Python script that displays system information in a neofetch-style
   - Fedora
   - Debian
   - Arch Linux
+  - Gentoo
+  - Kali Linux
   - Windows 10/11
   - Generic Linux fallback
 
@@ -77,7 +79,9 @@ fz
 - **Ubuntu** ◯
 - **Fedora**
 - **Debian** ◈
-- **Arch Linux** and derivatives
+- **Arch Linux**
+- **Gentoo**
+- **Kali Linux** ⚔️
 - **And all other Linux distributions!**
 
 **Windows:**
