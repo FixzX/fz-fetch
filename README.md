@@ -4,6 +4,9 @@ A lightweight Python script that displays system information in a neofetch-style
 
 ## Features
 
+- **Beautiful ASCII Art**: Large, detailed neofetch-style logos for each Linux distribution
+- **1:1 Layout**: Logo on the left, system info on the right (just like neofetch)
+- **Color Bar**: Shows terminal color capabilities at the bottom
 - **OS Detection**: Automatically detects your Linux distribution
 - **System Information**:
   - Operating System name and version
@@ -15,8 +18,14 @@ A lightweight Python script that displays system information in a neofetch-style
   - Default shell
   - Installed packages count
   - Hostname
-- **Beautiful ASCII Art**: Shows a logo based on your Linux distribution
-- **Color Output**: Nicely formatted with colors
+- **Color Output**: Nicely formatted with ANSI colors
+- **Distro Logos**: Includes artwork for:
+  - Linux Mint 🍃
+  - Ubuntu
+  - Fedora
+  - Debian
+  - Arch Linux
+  - Generic Linux fallback
 
 ## Installation
 
@@ -81,17 +90,19 @@ fz
 ## Example Output
 
 ```
-     .;;,.         OS:      Linux Mint 22.3
-   .;;`,..;;.      Kernel:  6.14.0-37-generic
-  .;;`'  `;;.      Uptime:  1h 35m
- .;;. ,::, .;;.    CPU:     Intel(R) Celeron(R) CPU B820 @ 1.70GHz (2)
- .;;.`::::'.;;.    Memory:  2852MB / 3817MB
- .;;. ':::' .;;.   DE:      Xfce
- .;;. .:::.;;.     Shell:   bash
-  `;;. ';;';;'     Packages:1869 (dpkg)
-    `;;.;;;'       Hostname:fixz
-        .          
-    LINUX MINT     
+     .;;,.          Hostname: fixz
+   .;;`,..;;.       ----------------------------------------
+  .;;`'  `;;.       OS: Linux Mint 22.3
+ .;;. ,::, .;;.     Kernel: 6.14.0-37-generic
+ .;;.`::::'.;;.     Uptime: 1h 43m
+ .;;. ':::' .;;.    Packages: 1869 (dpkg)
+ .;;. .:::.;;.      Shell: bash
+ .;;.'  ;;'.;;.     DE: Xfce
+  `;;. ';;';;'      CPU: Intel(R) Celeron(R) CPU B820 @ 1.70GHz (2)
+    `;;.;;;'        Memory: 2787MB / 3817MB
+       .            
+                    
+  LINUX MINT        [Color Bar with 8 colors]
 ```
 
 ## Customization
