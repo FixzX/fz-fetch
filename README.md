@@ -9,18 +9,22 @@ A lightweight Python script that displays system information in a neofetch-style
 - **1:1 Layout**: Logo on the left, system info on the right (just like neofetch)
 - **Color Bar**: Shows terminal color capabilities at the bottom
 - **OS Detection**: Automatically detects your operating system and distribution
-- **System Information**:
-  - Operating System name and version
-  - Kernel version
-  - System uptime
-  - CPU model and core count
-  - RAM usage
-  - Desktop Environment (GNOME, KDE, XFCE, MATE, etc.)
-  - Default shell
-  - Installed packages count
-  - Hostname
+- **Comprehensive System Information**:
+  - 📅 Current Date and Time
+  - 🔤 Hostname
+  - 🐧 Operating System name and version
+  - 🔌 Kernel version
+  - ⏱️ System uptime
+  - 📦 Installed packages count
+  - 🐚 Default shell
+  - 🖥️ Desktop Environment (GNOME, KDE, XFCE, MATE, etc.)
+  - 📺 Display Resolution
+  - 💻 CPU model and core count
+  - 🎮 GPU model and VRAM
+  - 💾 RAM usage
+  - 🗄️ Disk storage usage
 - **Color Output**: Nicely formatted with ANSI colors
-- **Distro Logos**: Includes artwork for:
+- **Distro Logos**: Includes artwork for 15+ distributions
   - Linux Mint 🍃
   - Ubuntu
   - Fedora
@@ -28,6 +32,14 @@ A lightweight Python script that displays system information in a neofetch-style
   - Arch Linux
   - Gentoo
   - Kali Linux
+  - Rocky Linux
+  - RHEL (Red Hat Enterprise Linux)
+  - openSUSE
+  - Pop!_OS
+  - Elementary OS
+  - Zorin OS
+  - MX Linux
+  - Linux Lite
   - Windows 10/11
   - Generic Linux fallback
 
@@ -82,6 +94,14 @@ fz
 - **Arch Linux**
 - **Gentoo**
 - **Kali Linux** ⚔️
+- **Rocky Linux**
+- **RHEL** (Red Hat Enterprise Linux)
+- **openSUSE**
+- **Pop!_OS**
+- **Elementary OS**
+- **Zorin OS**
+- **MX Linux**
+- **Linux Lite**
 - **And all other Linux distributions!**
 
 **Windows:**
@@ -101,19 +121,22 @@ fz
 ## Example Output
 
 ```
-     .;;,.          Hostname: fixz
+     .;;,.          DateTime: 2026-04-17 22:43:12
    .;;`,..;;.       ----------------------------------------
-  .;;`'  `;;.       OS: Linux Mint 22.3
- .;;. ,::, .;;.     Kernel: 6.14.0-37-generic
- .;;.`::::'.;;.     Uptime: 1h 43m
- .;;. ':::' .;;.    Packages: 1869 (dpkg)
- .;;. .:::.;;.      Shell: bash
- .;;.'  ;;'.;;.     DE: Xfce
-  `;;. ';;';;'      CPU: Intel(R) Celeron(R) CPU B820 @ 1.70GHz (2)
-    `;;.;;;'        Memory: 2787MB / 3817MB
-       .            
+  .;;`'  `;;.       Hostname: fixz
+ .;;. ,::, .;;.     OS: Linux Mint 22.3
+ .;;.`::::'.;;.     Kernel: 6.14.0-37-generic
+ .;;. ':::' .;;.    Uptime: 2h 2m
+ .;;. .:::.;;.      Packages: 1869 (dpkg)
+ .;;.'  ;;'.;;.     Shell: bash
+  `;;. ';;';;'      DE: Xfce
+    `;;.;;;'        Display: 1366x768
+       .            CPU: Intel Core 2 Duo @ 2.0GHz (2)
+                    GPU: Intel Integrated Graphics
+  LINUX MINT        Memory: 2821MB / 3817MB
+                    Disk: 15GB / 109GB
                     
-  LINUX MINT        [Color Bar with 8 colors]
+                    [Color Bar with 8 colors]
 ```
 
 ## Customization

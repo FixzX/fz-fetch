@@ -218,17 +218,99 @@ class SystemInfo:
             
             return "Unknown"
 
+    def get_gpu(self):
+        if self.is_windows:
+            try:
+                gpu = self.run_command("wmic path win32_videocontroller get name | findstr /r .")
+                gpu = gpu.replace("Name", "").strip()
+                return gpu if gpu else "Unknown"
+            except:
+                return "Unknown"
+        else:
+            try:
+                gpu = self.run_command("lspci | grep -i vga | sed 's/.*: //'")
+                if gpu:
+                    return gpu.split('\n')[0]
+            except:
+                pass
+            try:
+                gpu = self.run_command("lshw -C display | grep product | sed 's/.*product: //'")
+                if gpu:
+                    return gpu.split('\n')[0]
+            except:
+                pass
+            return "Unknown"
+
+    def get_disk(self):
+        if self.is_windows:
+            try:
+                result = self.run_command("wmic logicaldisk get size,freespace | findstr /r .")
+                if result:
+                    parts = result.split()
+                    if len(parts) >= 2:
+                        total = int(parts[0]) // (1024**3)
+                        free = int(parts[1]) // (1024**3)
+                        used = total - free
+                        return f"{used}GB / {total}GB"
+            except:
+                pass
+            return "Unknown"
+        else:
+            try:
+                result = self.run_command("df -h / | tail -1 | awk '{print $3 \" / \" $2}'")
+                if result:
+                    return result
+            except:
+                pass
+            return "Unknown"
+
+    def get_datetime(self):
+        try:
+            return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        except:
+            return "Unknown"
+
+    def get_display(self):
+        if self.is_windows:
+            try:
+                res = self.run_command("wmic path win32_videocontroller get currenthorizontalresolution,currentverticalresolution | findstr /r .")
+                if res:
+                    parts = res.split()
+                    if len(parts) >= 2:
+                        return f"{parts[0]}x{parts[1]}"
+            except:
+                pass
+            return "Unknown"
+        else:
+            try:
+                res = self.run_command("xdpyinfo | grep dimensions | awk '{print $2}'")
+                if res:
+                    return res
+            except:
+                pass
+            try:
+                res = self.run_command("xrandr | grep ' connected' | awk '{print $3}' | sed 's/+.*//'")
+                if res:
+                    return res.split('\n')[0]
+            except:
+                pass
+            return "Unknown"
+
     def collect_info(self):
         self.info = {
+            'DateTime': self.get_datetime(),
+            'Hostname': self.get_hostname(),
             'OS': self.get_os_info(),
             'Kernel': self.get_kernel(),
             'Uptime': self.get_uptime(),
-            'CPU': self.get_cpu(),
-            'Memory': self.get_memory(),
-            'DE': self.get_desktop_environment(),
-            'Shell': self.get_shell(),
             'Packages': self.get_packages(),
-            'Hostname': self.get_hostname(),
+            'Shell': self.get_shell(),
+            'DE': self.get_desktop_environment(),
+            'Display': self.get_display(),
+            'CPU': self.get_cpu(),
+            'GPU': self.get_gpu(),
+            'Memory': self.get_memory(),
+            'Disk': self.get_disk(),
         }
         return self.info
 
@@ -410,6 +492,182 @@ class SystemInfo:
                 "   KALI LINUX       ",
                 "                    ",
             ],
+            'Rocky Linux': [
+                "         /\\         ",
+                "        /  \\        ",
+                "       /    \\       ",
+                "      /  ()  \\      ",
+                "     / ______ \\     ",
+                "    /          \\    ",
+                "   /            \\   ",
+                "  /              \\  ",
+                " /________________\\ ",
+                " \\                / ",
+                "  \\              /  ",
+                "   \\            /   ",
+                "    \\          /    ",
+                "     \\        /     ",
+                "      \\  ()  /      ",
+                "       \\    /       ",
+                "        \\  /        ",
+                "         \\/         ",
+                "    ROCKY LINUX     ",
+                "                    ",
+            ],
+            'RHEL': [
+                "       .------.     ",
+                "      /        \\    ",
+                "     | _______ |    ",
+                "    /  |  R  | \\   ",
+                "   |   |-----| |   ",
+                "   |   |  H  | |   ",
+                "   |   |-----| |   ",
+                "    \\  |  E  | /   ",
+                "     | |-----| |    ",
+                "      \\|     | /    ",
+                "       |  L  |/     ",
+                "       |_____|      ",
+                "       |     |      ",
+                "       |     |      ",
+                "      /       \\     ",
+                "                    ",
+                "        RHEL        ",
+                "                    ",
+                "                    ",
+                "                    ",
+            ],
+            'openSUSE': [
+                "         __         ",
+                "        /  \\        ",
+                "       / /  \\       ",
+                "      / /    \\      ",
+                "     / /  /\\  \\     ",
+                "    /_/  /  \\  \\    ",
+                "    \\ \\  \\  /  /    ",
+                "     \\ \\  \\/  /     ",
+                "      \\ \\    /      ",
+                "       \\ \\  /       ",
+                "        \\  /        ",
+                "         \\/         ",
+                "                    ",
+                "                    ",
+                "       openSUSE     ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+            ],
+            'Pop!_OS': [
+                "       _____        ",
+                "      /  O  \\       ",
+                "     |   >   |      ",
+                "     |_   _ _|      ",
+                "      / | | \\       ",
+                "     /  | |  \\      ",
+                "    |   | |   |     ",
+                "    | _ | | _ |     ",
+                "    |/ \\| |/ \\|     ",
+                "     \\ / \\ /        ",
+                "      V   V         ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "      POP!_OS       ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+            ],
+            'Elementary OS': [
+                "       _____        ",
+                "      /     \\       ",
+                "     /  _-_  \\      ",
+                "    |  /   \\  |     ",
+                "    | |     | |     ",
+                "    | |  e  | |     ",
+                "    |  \\   /  |     ",
+                "     \\  -_-  /      ",
+                "      \\_____/       ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "   ELEMENTARY OS    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+            ],
+            'Zorin OS': [
+                "       ______      ",
+                "      /  Z  O  \\    ",
+                "     /   \\  /   \\   ",
+                "    |  ___||___  |  ",
+                "    | /   ||   \\ |  ",
+                "    | \\   ||   / |  ",
+                "     \\  R  IN  /   ",
+                "      \\  ___  /    ",
+                "       |  OS  |     ",
+                "       |      |     ",
+                "       |______|     ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "      ZORIN OS      ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+            ],
+            'MX Linux': [
+                "     /\\___/\\       ",
+                "    (  o o  )       ",
+                "    (  >   <  )      ",
+                "    (   \\ /    )     ",
+                "    (    |    )      ",
+                "    (   / \\   )      ",
+                "     (  ||| )       ",
+                "      ( |M| )       ",
+                "       ( X )        ",
+                "        (|)         ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "      MX LINUX      ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+            ],
+            'Linux Lite': [
+                "       _____        ",
+                "      |LITE |       ",
+                "      |_____|       ",
+                "      /     \\       ",
+                "     /  ___  \\      ",
+                "    |  /   \\  |     ",
+                "    | |     | |     ",
+                "    |  \\___/  |     ",
+                "     \\       /      ",
+                "      \\_____/       ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "    LINUX LITE      ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+            ],
             'default': [
                 "     ___            ",
                 "    /   \\           ",
@@ -452,6 +710,7 @@ class SystemInfo:
         info_lines = []
         
         info_labels = {
+            'DateTime': self.info.get('DateTime', 'Unknown'),
             'Hostname': self.info.get('Hostname', 'Unknown'),
             'OS': self.info.get('OS', 'Unknown'),
             'Kernel': self.info.get('Kernel', 'Unknown'),
@@ -459,8 +718,11 @@ class SystemInfo:
             'Packages': self.info.get('Packages', 'Unknown'),
             'Shell': self.info.get('Shell', 'Unknown'),
             'DE': self.info.get('DE', 'Unknown'),
+            'Display': self.info.get('Display', 'Unknown'),
             'CPU': self.info.get('CPU', 'Unknown'),
+            'GPU': self.info.get('GPU', 'Unknown'),
             'Memory': self.info.get('Memory', 'Unknown'),
+            'Disk': self.info.get('Disk', 'Unknown'),
         }
         
         separator = f"{self.colors['white']}{'-' * 40}{self.colors['reset']}"
