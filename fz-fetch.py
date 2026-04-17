@@ -5,6 +5,7 @@ A lightweight neofetch-like tool that works on Linux Mint, Ubuntu, Fedora, and o
 """
 
 import os
+import sys
 import platform
 import subprocess
 import re
@@ -406,8 +407,9 @@ class SystemInfo:
             print(f"  {logo_line}  {info_line}")
         
         # Print color bar at bottom  
-        color_bar = f"\n  {self.colors['reset']}{chr(27)}[40m  {chr(27)}[0m{chr(27)}[41m  {chr(27)}[0m{chr(27)}[42m  {chr(27)}[0m{chr(27)}[43m  {chr(27)}[0m{chr(27)}[44m  {chr(27)}[0m{chr(27)}[45m  {chr(27)}[0m{chr(27)}[46m  {chr(27)}[0m{chr(27)}[47m  {chr(27)}[0m\n"
-        print(color_bar)
+        sys.stdout.flush()
+        color_bar = f"\n  \033[40m  \033[0m\033[41m  \033[0m\033[42m  \033[0m\033[43m  \033[0m\033[44m  \033[0m\033[45m  \033[0m\033[46m  \033[0m\033[47m  \033[0m\n"
+        print(color_bar, flush=True)
 
 
 def main():
