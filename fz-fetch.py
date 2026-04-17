@@ -208,77 +208,139 @@ class SystemInfo:
         return self.info
 
     def get_ascii_logo(self, os_name):
-        """Return ASCII art logo for the OS - Neofetch style"""
+        """Return ASCII art logo for the OS - Large detailed neofetch style"""
         logos = {
             'Linux Mint': [
-                "       .;;,.       ",
-                "     .;;`,..;;.    ",
-                "    .;;`'  `;;.    ",
-                "   .;;. ,::, .;;.  ",
-                "   .;;.`::::'.;;.  ",
-                "   .;;. ':::' .;;. ",
-                "   .;;. .:::.;;.   ",
-                "    `;;. ';;';;'   ",
-                "      `;;.;;;'     ",
-                "          .        ",
-                "      LINUX MINT   ",
+                "       .;;,.        ",
+                "     .;;`,..;;.     ",
+                "    .;;`'  `;;.     ",
+                "   .;;. ,::, .;;.   ",
+                "   .;;.`::::'.;;.   ",
+                "   .;;. ':::' .;;.  ",
+                "   .;;. .:::.;;.    ",
+                "   .;;.'  ;;'.;;.   ",
+                "    `;;. ';;';;'    ",
+                "      `;;.;;;'      ",
+                "         .          ",
+                "                    ",
+                "    LINUX MINT      ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
+                "                    ",
             ],
             'Ubuntu': [
-                "          .----. ",
-                "        / Ubuntu \\ ",
-                "       |  o    o | ",
-                "       |    <>    | ",
-                "       |  \\____/ | ",
-                "        \\        / ",
-                "         '------' ",
-                "                  ",
-                "                  ",
-                "       UBUNTU     ",
+                "           ...      ",
+                "         .MMMMM.    ",
+                "        .MMMMMMM.   ",
+                "       .MMMMMMMM.   ",
+                "      .MMMMMMMMM.   ",
+                "     .MMMM    MMM.  ",
+                "    .MMMM  MM  MMM. ",
+                "    .MMM   MM   MMM.",
+                "    .MMM   MM   MMM.",
+                "    .MMM   MM   MMM.",
+                "    .MMMM      MMM. ",
+                "     .MMMM  MMMM.   ",
+                "      .MMMMMMMM.    ",
+                "       .MMMMMMM.    ",
+                "        .MMMMM.     ",
+                "         .MMM.      ",
+                "          .M.       ",
+                "                    ",
+                "       UBUNTU       ",
+                "                    ",
             ],
             'Fedora': [
-                "         ,-. ",
-                "        /   \\ ",
-                "       | o o | ",
-                "       |  >  | ",
-                "       | --- | ",
-                "        \\___/ ",
-                "         | | ",
-                "        /   \\ ",
-                "       /     \\ ",
-                "        FEDORA ",
+                "        /@@@@\\      ",
+                "       /@@@@@@\\     ",
+                "      |@@@@@@@@|    ",
+                "     |@@@@@@@@@|    ",
+                "     |@@@@@@@@@|    ",
+                "    |@@@@@ ^ @@@|   ",
+                "    |@@@@  > @@@@|  ",
+                "   |@@@@      @@@@| ",
+                "   |@@@@  ####@@@@| ",
+                "   |@@@@  ####@@@@| ",
+                "    |@@@@@@@@@@@|   ",
+                "    |@@@@@@@@@@@|   ",
+                "     |@@@@@@@@@|    ",
+                "      |@@@@@@@|     ",
+                "       |@@@@@|      ",
+                "        \\@@@/       ",
+                "                    ",
+                "       FEDORA       ",
+                "                    ",
+                "                    ",
             ],
             'Debian': [
-                "    ___           ",
-                "   /   \\__        ",
-                "  |  o  o  \\      ",
-                "  |    >    |     ",
-                "  |  \\___/  |     ",
-                "   \\      _/      ",
-                "    '----'        ",
-                "                  ",
-                "                  ",
-                "     DEBIAN       ",
+                "       .------.     ",
+                "      /  _____ \\    ",
+                "     /  /     \\ \\   ",
+                "    |  |  o o  | |  ",
+                "    |  |   <>  | |  ",
+                "    |  | \\___/ | |  ",
+                "     \\  \\     / /   ",
+                "      \\  '---'  /   ",
+                "       '------'     ",
+                "         | |        ",
+                "        /   \\       ",
+                "       | _ _ |      ",
+                "        \\ - /       ",
+                "        / | \\       ",
+                "       /  |  \\      ",
+                "      |   |   |     ",
+                "     /    |    \\    ",
+                "                    ",
+                "    DEBIAN GNU      ",
+                "                    ",
             ],
             'Arch Linux': [
-                "       /\\         ",
-                "      /  \\        ",
-                "     /    \\       ",
-                "    /      \\      ",
-                "   /   /\\   \\     ",
-                "  /   /  \\   \\    ",
-                " /   /____\\   \\   ",
-                "/   /      \\   \\  ",
-                "    ARCH LINUX    ",
+                "           /\\       ",
+                "          /  \\      ",
+                "         /    \\     ",
+                "        /      \\    ",
+                "       /        \\   ",
+                "      /          \\  ",
+                "     /    /\\      \\ ",
+                "    /    /  \\      \\",
+                "   /    /    \\      \\",
+                "  /    /______\\      \\",
+                " /    /        \\      \\",
+                "/____/          \\______\\",
+                "\\    \\          /    / ",
+                " \\    \\        /    /  ",
+                "  \\    \\______/    /   ",
+                "   \\            /      ",
+                "    \\__________/       ",
+                "                       ",
+                "    ARCH LINUX         ",
+                "                       ",
             ],
             'default': [
-                "      .-----.     ",
-                "     /  o o  \\    ",
-                "    |    >    |   ",
-                "    |  \\___/  |   ",
-                "     \\       /    ",
-                "      '-._.-'     ",
-                "                  ",
-                "       LINUX      ",
+                "     ___            ",
+                "    /   \\           ",
+                "   | o o |          ",
+                "   |  >  |          ",
+                "   |     |          ",
+                "    \\ - /           ",
+                "     | |            ",
+                "    _| |_           ",
+                "   / | | \\          ",
+                "  |  | |  |         ",
+                "  | _| | _|         ",
+                " _|/ | | \\|_        ",
+                "/ |  | |  | \\       ",
+                "  |  | |  |         ",
+                "  \\  | |  /         ",
+                "   \\ | | /          ",
+                "    \\| |/           ",
+                "     | |            ",
+                "     LINUX          ",
+                "                    ",
             ]
         }
         
@@ -289,26 +351,46 @@ class SystemInfo:
         return logos['default']
 
     def display(self):
-        """Display system information in neofetch style"""
+        """Display system information in true neofetch style"""
         self.collect_info()
         
         os_name = self.info['OS']
         logo_lines = self.get_ascii_logo(os_name)
         
-        # Build info lines with better formatting
+        # Build info lines in neofetch style
         info_lines = []
-        max_label_len = max(len(label) for label in self.info.keys())
         
-        for label, value in self.info.items():
-            label_str = f"{label}:".ljust(max_label_len + 1)
-            info_lines.append(f"{self.colors['magenta']}{label_str}{self.colors['cyan']}{value}{self.colors['reset']}")
+        # Order and custom format for info
+        info_labels = {
+            'Hostname': self.info.get('Hostname', 'Unknown'),
+            'OS': self.info.get('OS', 'Unknown'),
+            'Kernel': self.info.get('Kernel', 'Unknown'),
+            'Uptime': self.info.get('Uptime', 'Unknown'),
+            'Packages': self.info.get('Packages', 'Unknown'),
+            'Shell': self.info.get('Shell', 'Unknown'),
+            'DE': self.info.get('DE', 'Unknown'),
+            'CPU': self.info.get('CPU', 'Unknown'),
+            'Memory': self.info.get('Memory', 'Unknown'),
+        }
         
-        # Print logo and info side by side like neofetch
-        print()
+        # Create separator line
+        separator = f"{self.colors['white']}{'-' * 40}{self.colors['reset']}"
+        
+        for i, (label, value) in enumerate(info_labels.items()):
+            if i == 1:  # Add separator after Hostname
+                info_lines.append(separator)
+            
+            label_colored = f"{self.colors['white']}{label}:{self.colors['reset']}"
+            value_colored = f"{self.colors['cyan']}{value}{self.colors['reset']}"
+            info_lines.append(f"{label_colored} {value_colored}")
+        
+        # Print output
+        print(f"\n{self.colors['reset']}", end="")
+        
         max_lines = max(len(logo_lines), len(info_lines))
         
         for i in range(max_lines):
-            # Logo line
+            # Logo line with cyan color
             if i < len(logo_lines):
                 logo_line = f"{self.colors['cyan']}{logo_lines[i]}{self.colors['reset']}"
             else:
@@ -320,9 +402,12 @@ class SystemInfo:
             else:
                 info_line = ""
             
+            # Print with proper spacing
             print(f"  {logo_line}  {info_line}")
         
-        print()
+        # Print color bar at bottom  
+        color_bar = f"\n  {self.colors['reset']}{chr(27)}[40m  {chr(27)}[0m{chr(27)}[41m  {chr(27)}[0m{chr(27)}[42m  {chr(27)}[0m{chr(27)}[43m  {chr(27)}[0m{chr(27)}[44m  {chr(27)}[0m{chr(27)}[45m  {chr(27)}[0m{chr(27)}[46m  {chr(27)}[0m{chr(27)}[47m  {chr(27)}[0m\n"
+        print(color_bar)
 
 
 def main():
