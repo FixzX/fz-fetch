@@ -210,36 +210,63 @@ class SystemInfo:
     def get_ascii_logo(self, os_name):
         """Return ASCII art logo for the OS"""
         logos = {
-            'Linux Mint': """
-    ╔═════════════════╗
-    ║   🍃 LINUX     ║
-    ║    MINT        ║
-    ╚═════════════════╝
-""",
-            'Ubuntu': """
-    ╔═════════════════╗
-    ║   ◯ UBUNTU     ║
-    ║                ║
-    ╚═════════════════╝
-""",
-            'Fedora': """
-    ╔═════════════════╗
-    ║   Fedora        ║
-    ║                ║
-    ╚═════════════════╝
-""",
-            'Debian': """
-    ╔═════════════════╗
-    ║   ◈ DEBIAN     ║
-    ║                ║
-    ╚═════════════════╝
-""",
-            'default': """
-    ╔═════════════════╗
-    ║   🐧 LINUX     ║
-    ║                ║
-    ╚═════════════════╝
-"""
+            'Linux Mint': [
+                "       .;;,.       ",
+                "     .;;`,..;;.    ",
+                "    .;;`'  `;;.    ",
+                "    .;;. ,::, .;;. ",
+                "    .;;.`::::'.;;. ",
+                "     `;;.    .;;'  ",
+                "       `;;.;;;'    ",
+                "           .      ",
+                "       LINUX MINT  ",
+            ],
+            'Ubuntu': [
+                "          .....   ",
+                "        .MMMMM.   ",
+                "       MMMMMMMM   ",
+                "      MMMMMMMMM   ",
+                "     MMMM    MMM   ",
+                "    MMMM  MM  MMM  ",
+                "    MMM   MM   MMM ",
+                "    MMM          M ",
+                "       UBUNTU     ",
+            ],
+            'Fedora': [
+                "        ,'''',.   ",
+                "       /  o o  \\  ",
+                "      {    >    } ",
+                "       \\  - -  /  ",
+                "        `.___.´   ",
+                "                  ",
+                "        FEDORA    ",
+            ],
+            'Debian': [
+                "   _____          ",
+                "  /  o o \\        ",
+                " {    >   }       ",
+                "  \\  - - /        ",
+                "   '-----'        ",
+                "  DEBIAN GNU      ",
+            ],
+            'Arch Linux': [
+                "     /\\          ",
+                "    /  \\         ",
+                "   /    \\        ",
+                "  /      \\       ",
+                " /        \\      ",
+                "/          \\     ",
+                "            \\    ",
+                "   ARCH LINUX    ",
+            ],
+            'default': [
+                "   ___           ",
+                "  (o o)          ",
+                " ( =^= )         ",
+                "  (   )          ",
+                "   | |           ",
+                "   LINUX         ",
+            ]
         }
         
         for key in logos:
@@ -253,16 +280,34 @@ class SystemInfo:
         self.collect_info()
         
         os_name = self.info['OS']
-        logo = self.get_ascii_logo(os_name)
+        logo_lines = self.get_ascii_logo(os_name)
         
-        print(f"\n{self.colors['cyan']}{logo}{self.colors['reset']}")
-        
-        # Print information in a nice format
+        # Build info lines
+        info_lines = []
         max_label_len = max(len(label) for label in self.info.keys())
         
         for label, value in self.info.items():
-            label_str = f"{label}:".ljust(max_label_len + 2)
-            print(f"  {self.colors['green']}{label_str}{self.colors['reset']}{self.colors['white']}{value}{self.colors['reset']}")
+            label_str = f"{label}:".ljust(max_label_len + 1)
+            info_lines.append(f"{self.colors['green']}{label_str}{self.colors['reset']}{self.colors['cyan']}{value}{self.colors['reset']}")
+        
+        # Print logo and info side by side
+        print()
+        max_lines = max(len(logo_lines), len(info_lines))
+        
+        for i in range(max_lines):
+            # Logo line
+            if i < len(logo_lines):
+                logo_line = f"{self.colors['cyan']}{logo_lines[i]}{self.colors['reset']}"
+            else:
+                logo_line = " " * 20
+            
+            # Info line
+            if i < len(info_lines):
+                info_line = info_lines[i]
+            else:
+                info_line = ""
+            
+            print(f"  {logo_line}  {info_line}")
         
         print()
 
