@@ -2,6 +2,8 @@
 
 import os
 import sys
+import json
+import argparse
 import platform
 import subprocess
 import re
@@ -11,9 +13,10 @@ from datetime import datetime, timedelta
 __doc__ = "Highly inspired by fastfetch and neofetch"
 
 class SystemInfo:
-    def __init__(self):
+    def __init__(self, no_color=False):
         self.info = {}
         self.is_windows = platform.system() == "Windows"
+        self.no_color = no_color
         self.colors = {
             'reset': '\033[0m',
             'bold': '\033[1m',
@@ -25,6 +28,9 @@ class SystemInfo:
             'cyan': '\033[96m',
             'white': '\033[97m',
         }
+        if self.no_color:
+            for key in self.colors:
+                self.colors[key] = ''
 
     def run_command(self, cmd):
         try:
@@ -757,10 +763,90 @@ class SystemInfo:
         color_bar = f"\n  \033[40m  \033[0m\033[41m  \033[0m\033[42m  \033[0m\033[43m  \033[0m\033[44m  \033[0m\033[45m  \033[0m\033[46m  \033[0m\033[47m  \033[0m\n"
         print(color_bar, flush=True)
 
+    def display_simple(self):
+        self.collect_info()
+        info_labels = {
+            'DateTime': self.info.get('DateTime', 'Unknown'),
+            'Hostname': self.info.get('Hostname', 'Unknown'),
+            'OS': self.info.get('OS', 'Unknown'),
+            'Kernel': self.info.get('Kernel', 'Unknown'),
+            'Uptime': self.info.get('Uptime', 'Unknown'),
+            'Packages': self.info.get('Packages', 'Unknown'),
+            'Shell': self.info.get('Shell', 'Unknown'),
+            'DE': self.info.get('DE', 'Unknown'),
+            'Display': self.info.get('Display', 'Unknown'),
+            'CPU': self.info.get('CPU', 'Unknown'),
+            'GPU': self.info.get('GPU', 'Unknown'),
+            'Memory': self.info.get('Memory', 'Unknown'),
+            'Disk': self.info.get('Disk', 'Unknown'),
+        }
+        for label, value in info_labels.items():
+            print(f"{label}: {value}")
+
+    def display_json(self):
+        self.collect_info()
+        output = {
+            'DateTime': self.info.get('DateTime', 'Unknown'),
+            'Hostname': self.info.get('Hostname', 'Unknown'),
+            'OS': self.info.get('OS', 'Unknown'),
+            'Kernel': self.info.get('Kernel', 'Unknown'),
+            'Uptime': self.info.get('Uptime', 'Unknown'),
+            'Packages': self.info.get('Packages', 'Unknown'),
+            'Shell': self.info.get('Shell', 'Unknown'),
+            'DE': self.info.get('DE', 'Unknown'),
+            'Display': self.info.get('Display', 'Unknown'),
+            'CPU': self.info.get('CPU', 'Unknown'),
+            'GPU': self.info.get('GPU', 'Unknown'),
+            'Memory': self.info.get('Memory', 'Unknown'),
+            'Disk': self.info.get('Disk', 'Unknown'),
+        }
+        print(json.dumps(output, indent=2))
+
+
+def load_config():
+    config_path = Path.home() / '.config' / 'fz-fetch' / 'config'
+    config = {}
+    if config_path.exists():
+        try:
+            with open(config_path) as f:
+                config = json.load(f)
+        except:
+            pass
+    return config
+
+
+def get_args():
+    parser = argparse.ArgumentParser(
+        prog='fz-fetch',
+        description='Highly inspired by fastfetch and neofetch',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog='''Examples:
+  fz-fetch                    Display system info with ASCII art
+  fz-fetch --simple           Display in simple text format
+  fz-fetch --json             Output as JSON
+  fz-fetch --no-color         Disable colors
+  fz-fetch --help             Show this help message'''
+    )
+    parser.add_argument('--no-color', action='store_true', help='Disable ANSI colors')
+    parser.add_argument('--simple', action='store_true', help='Display in simple text format')
+    parser.add_argument('--json', action='store_true', help='Output as JSON')
+    parser.add_argument('--version', action='version', version='fz-fetch 1.0')
+    return parser.parse_args()
+
 
 def main():
-    system_info = SystemInfo()
-    system_info.display()
+    args = get_args()
+    config = load_config()
+    
+    no_color = args.no_color or config.get('no_color', False)
+    system_info = SystemInfo(no_color=no_color)
+    
+    if args.json:
+        system_info.display_json()
+    elif args.simple:
+        system_info.display_simple()
+    else:
+        system_info.display()
 
 
 if __name__ == '__main__':
